@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>evaluation</title>
+</head>
+
+<body>
+    <H1>Article</H1>
+    <p>{{article_text}}</p>
+    <form action="/submit" method="post">
+        {% for topic in topics_list %}
+        <h3>{{ topic }}</h3>
+
+        <input type="radio" name="{{ topic }}" value="0" id="{{ topic }}_0" required>
+        <label for="{{ topic }}_0">Strongly Disagree</label>
+
+        <input type="radio" name="{{ topic }}" value="3.3" id="{{ topic }}_3.3" required>
+        <label for="{{ topic }}_3.3">Disagree</label>
+
+        <input type="radio" name="{{ topic }}" value="6.3" id="{{ topic }}_6.3" required>
+        <label for="{{ topic }}_6.3">Agree</label>
+
+        <input type="radio" name="{{ topic }}" value="10" id="{{ topic }}_10" required>
+        <label for="{{ topic }}_10">Strongly Agree</label><br>
+        {% endfor %}
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>
