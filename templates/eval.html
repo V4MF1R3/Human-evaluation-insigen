@@ -4,15 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>evaluation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Evaluation</title>
 </head>
 
-<body>
-    <H1>Article</H1>
-    <p>{{article_text}}</p>
-    <form action="/submit" method="post">
+<body style="background-color: rgb(73, 73, 73);">
+    <H1 class="heading">Article</H1>
+    <p class="articleText">{{article_text}}</p>
+    <form id="myForm" action="/submit" method="post">
+        <h3>Here are the topics from our model, tell us how much you agree or disagree.</h3>
         {% for topic in topics_list %}
-        <h3>{{ topic }}</h3>
+        <h4>{{ topic }}</h4>
 
         <input type="radio" name="{{ topic }}" value="0" id="{{ topic }}_0" required>
         <label for="{{ topic }}_0">Strongly Disagree</label>
@@ -27,7 +29,7 @@
         <label for="{{ topic }}_10">Strongly Agree</label><br>
         {% endfor %}
 
-        <button type="submit">Submit</button>
+        <button class="submitBtn" type="submit">Submit</button>
     </form>
 </body>
 

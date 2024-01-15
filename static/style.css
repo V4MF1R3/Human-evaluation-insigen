@@ -1,0 +1,97 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.container {
+    display: flex;
+    margin: 0;
+    /* Set container as flexbox */
+}
+
+#insigen {
+    font-size: 100px;
+}
+
+.heading {
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+}
+
+.articleText {
+    font-size: 16px;
+    padding: 20px;
+}
+
+.div1,
+.div2 {
+    flex-grow: 1;
+    padding: 80px;
+    width: 50%;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 0.4s;
+}
+
+.div2 {
+    padding-top: 200px;
+}
+
+.div1:hover,
+.div2:hover {
+    background-color: rgb(73, 73, 73);
+}
+
+@media only screen and (max-width: 600px) {
+
+    .container {
+        flex-direction: column;
+    }
+
+    .div1,
+    .div2 {
+        flex-grow: 0;
+        width: 100%;
+        padding-top: 100px;
+    }
+}
+
+button {
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid #ffffff;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(52, 52, 52);
+    color: white;
+}
+
+#myForm {
+    background-color: #f2f2f2;
+    color: black;
+    padding: 20px;
+    width: 500px;
+    margin: auto;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2)
+}
+
+.submitBtn {
+    color: black;
+    border: 2px solid black;
+    width: 100%;
+    margin-top: 20px;
+}

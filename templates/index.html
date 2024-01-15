@@ -4,10 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Insigen</title>
 </head>
 
 <body>
+    <div class="container">
+        <div class="div1">
+            <h1 id="insigen">INSIGEN</h1>
+            <h2>A new approach for topic modelling</h2>
+            <p>In Natural Language Processing (NLP), extracting valuable insights from extensive textual data is a
+                persistent
+                challenge. Top2Vec, a notable algorithm in topic modeling, is recognized for uncovering topics without
+                predefined labels. Insigen builds on this by offering a generalized topic distribution for documents,
+                determining associations, and generating informative extractive summaries. Results suggest Insigen as a
+                promising solution for document analysis, advancing topic modeling, keyword extraction, and
+                summarization
+                beyond Top2Vec capabilities.</p>
+        </div>
+        <div class="div2">
+            <h2>Help us out with evaluation of topic distribution.</h2>
+            <a href="{{ url_for('eval') }}"><button class="eval">Evaluation</button></a>
+        </div>
+    </div>
 
 </body>
 
