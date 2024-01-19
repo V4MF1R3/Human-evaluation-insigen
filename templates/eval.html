@@ -149,7 +149,7 @@
 
     <div class="articleContainer">
         <!-- Truncated version -->
-        <p class="articleText" id="truncatedText">{{article_text | truncate(3000)}}</p>
+        <p class="articleText" id="truncatedText">{{article_text | truncate(2000)}}</p>
 
         <!-- Full version (initially hidden) -->
         <div id="fullText" style="display: none;">
@@ -157,7 +157,7 @@
         </div>
 
         <!-- "Read more" button -->
-        {% if article_text|length > 3000 %}
+        {% if article_text|length > 2000 %}
         <button onclick="toggleReadMore()" id="readMoreButton">Read more</button>
         {% endif %}
 
@@ -400,7 +400,8 @@
                 plugins: {
                     legend: {
                         display: true,
-                        position: 'right', // Change this to 'left' if you want it on the left side
+                        position: window.innerWidth < 768 ? 'top' : 'left', // Change this to 'left' if you want it on the left side
+                        align: window.innerWidth < 768 ? 'start' : 'end',
                         labels: {
                             font: {
                                 size: 16 // Adjust the font size as needed

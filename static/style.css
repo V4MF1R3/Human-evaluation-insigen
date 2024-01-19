@@ -117,7 +117,7 @@ button:hover {
 
 #mychartcontainer {
     margin: auto;
-    padding-top: 30px;
+    max-width: 1000px;
 }
 
 .read-more-content {

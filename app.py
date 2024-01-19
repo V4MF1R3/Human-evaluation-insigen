@@ -11,10 +11,10 @@ with open('data/td.json', 'r') as file:
     td = json.load(file)
 
 # uncomment the below code only if running for the first time
-# human_eval = []
-# human_eval = [[] for _ in range(3000)]
-# with open('data/human_eval.json', "w") as outfile:
-#     json.dump(human_eval, outfile, indent=2)
+human_eval = []
+human_eval = [[] for _ in range(3000)]
+with open('data/human_eval.json', "w") as outfile:
+    json.dump(human_eval, outfile, indent=2)
 
 
 @app.route('/')
@@ -41,6 +41,7 @@ def submit():
         human_eval[idx].append(int(request.form['rating']))
         with open('data/human_eval.json', "w") as outfile:
             json.dump(human_eval, outfile, indent=1)
+            print(f"Successfully wrote at {idx}")
         return redirect('/')
     else:
         return "failure"
