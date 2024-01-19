@@ -14,6 +14,14 @@ body {
     font-size: 100px;
 }
 
+.articleContainer {
+    background-color: #ffffff;
+    color: rgb(69, 69, 69);
+    max-width: 1000px;
+    margin: auto;
+    border-radius: 10px;
+}
+
 .heading {
     text-align: center;
 }
@@ -25,6 +33,7 @@ p {
 .articleText {
     font-size: 16px;
     padding: 20px;
+    text-align: justify;
 }
 
 .div1,
@@ -75,23 +84,42 @@ button {
     cursor: pointer;
 }
 
+#readMoreButton {
+    color: black;
+    border: 2px solid black;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
 button:hover {
     background-color: rgb(52, 52, 52);
     color: white;
 }
 
-#myForm {
-    background-color: #f2f2f2;
-    color: black;
-    padding: 20px;
-    width: 500px;
-    margin: auto;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2)
+#readMoreButton:hover {
+    background-color: rgb(52, 52, 52);
+    color: white;
 }
 
 .submitBtn {
     color: black;
     border: 2px solid black;
+    margin: auto;
+    margin-top: 10px;
     width: 100%;
-    margin-top: 20px;
+}
+
+#myChart {
+    display: inline-block;
+    max-height: 500px;
+    width: 500px;
+}
+
+#mychartcontainer {
+    margin: auto;
+    padding-top: 30px;
+}
+
+.read-more-content {
+    display: none;
 }

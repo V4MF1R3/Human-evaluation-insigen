@@ -28,7 +28,8 @@ def eval():
     session['idx'] = idx
     text = article.text[idx]
     topics = list(td[idx].keys())
-    return render_template('eval.html', article_text=text, topics_list=topics)
+    values = list(td[idx].values())
+    return render_template('eval.html', article_text=text, topics_list=topics, chart_data=values)
 
 
 @app.route('/submit', methods=['POST'])
@@ -37,15 +38,9 @@ def submit():
     with open('data/human_eval.json', "r") as file:
         human_eval = json.load(file)
     if request.method == 'POST':
-        temp_dict = {}
-        for topic in request.form:
-            rating = request.form[topic]
-            temp_dict[topic] = float(rating)
-        human_eval[idx].append(temp_dict) 
-        print(idx)
+        human_eval[idx].append(int(request.form['rating']))
         with open('data/human_eval.json', "w") as outfile:
             json.dump(human_eval, outfile, indent=1)
-
         return redirect('/')
     else:
         return "failure"
