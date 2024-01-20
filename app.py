@@ -43,7 +43,8 @@ def submit():
     with open('data/human_eval.json', "r") as file:
         human_eval = json.load(file)
     if request.method == 'POST':
-        human_eval[idx].append(int(request.form['rating']))     # request.form['rating'] is the input value from user, range [1-5]
+        # request.form['rating'] is the input value from user, range [1-5]
+        human_eval[idx].append(int(request.form['rating']))
         with open('data/human_eval.json', "w") as outfile:
             json.dump(human_eval, outfile, indent=1)
         return redirect('/')
