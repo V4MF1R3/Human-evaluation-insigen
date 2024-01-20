@@ -5,11 +5,10 @@ import random
 import gspread
 
 app = Flask(__name__)
-app.secret_key = "2144146"
 
 
 # importing data
-article = pd.read_csv('../Data/wiki.csv') #I Changed the path - Aaryan, make changes according to your structure
+article = pd.read_csv('data/wiki.csv')
 with open('data/td.json', 'r') as file:
     td = json.load(file)
 
@@ -21,18 +20,24 @@ with open('data/td.json', 'r') as file:
 
 
 # Get the google sheet
-Sheet_credential = gspread.service_account("creds.json") #update the path of the credential file
-spreadsheet = Sheet_credential.open_by_key('1BXBPs8NoKxl5UVBM3aUSdxjqV8PkAmRw2IloTduhmRc') 
+# update the path of the credential file
+Sheet_credential = gspread.service_account("creds.json")
+spreadsheet = Sheet_credential.open_by_key(
+    '1BXBPs8NoKxl5UVBM3aUSdxjqV8PkAmRw2IloTduhmRc')
 worksheet = spreadsheet.get_worksheet(0)
 rated_data = worksheet.get_all_values()
 rated_data = [val[1] for val in rated_data]
 
 # Home Page
+
+
 @app.route('/')
 def home():
     return render_template('index.html')
 
-#Created to avoid randomly generating the already rated articles
+# Created to avoid randomly generating the already rated articles
+
+
 def generate_idx():
     all_idxs = range(0, 2999)
     remaining_idx = list(set(all_idxs) - set(rated_data))
@@ -40,6 +45,8 @@ def generate_idx():
     return random.choice(remaining_idx)
 
 # evaluation page
+
+
 @app.route('/eval')
 def eval():
     idx = generate_idx()
@@ -60,14 +67,14 @@ def submit():
         human_eval = json.load(file)'''
     if request.method == 'POST':
         # request.form['rating'] is the input value from user, range [1-5]
-        #human_eval[idx].append(int(request.form['rating'])) Commented - Aaryan
-        #with open('data/human_eval.json', "w") as outfile: Commented - Aaryan
+        # human_eval[idx].append(int(request.form['rating'])) Commented - Aaryan
+        # with open('data/human_eval.json', "w") as outfile: Commented - Aaryan
         worksheet.append_row([request.form['rating'], idx])
-            #json.dump(human_eval, outfile, indent=1) Commented - Aaryan
+        # json.dump(human_eval, outfile, indent=1) Commented - Aaryan
         return redirect('/')
     else:
         return "failure"
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=81)
