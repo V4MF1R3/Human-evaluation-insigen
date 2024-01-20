@@ -5,6 +5,7 @@ import random
 import gspread
 
 app = Flask(__name__)
+app.secret_key = '2144146'
 
 
 # importing data
